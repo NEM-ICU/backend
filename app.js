@@ -1,21 +1,13 @@
 // Express $ mongoose
+
 const express = require("express");
 const app = express();
 
 // get request for controller
 
-data = { 'apple': 'apple'};
-
-app.get('/api/v1/tours', (req, res) => {
-    res.status(200).json({
-        status: 'success',
-        data: {
-            data
-        }
-    })
-});
-
-
+// 3) ROUTES
+const postRouter = require('./routes/postRoutes');
+app.use('/api/v1/post', postRouter);
 
 module.exports = app;
   
