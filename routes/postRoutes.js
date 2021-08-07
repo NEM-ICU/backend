@@ -10,5 +10,10 @@ postRouter
   .get(postController.getAllPosts)
   .post(postController.createPost);
 
+postRouter
+  .route('/:id')
+  .patch(postController.updatePost)
+  .delete(postController.deletePost);
+
 
 module.exports = postRouter;

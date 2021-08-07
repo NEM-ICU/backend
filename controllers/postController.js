@@ -45,3 +45,72 @@ exports.getAllPosts = async (req, res) => {
     })
   }
 };
+
+// get post by id
+
+exports.getPostsById = async (req, res) => {
+
+  try{
+
+  const posts = await Post.findById(req.params.id);
+    res.status(200).json({
+      results: posts.lenghth,
+      status: 'success',
+      data: {
+        posts
+      }
+    });
+  }catch(err){
+
+    res.status(400).json({
+      status: 'fail',
+      message: err
+    })
+  }
+};
+
+// update post by id
+
+exports.updatePost = async (req, res) => {
+
+  try{
+
+  const posts = await Post.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
+    res.status(200).json({
+      results: posts.lenghth,
+      status: 'success',
+      data: {
+        posts
+      }
+    });
+  }catch(err){
+
+    res.status(400).json({
+      status: 'fail',
+      message: err
+    })
+  }
+};
+
+// find and delete
+
+exports.deletePost = async (req, res) => {
+
+  try{
+
+  const posts = await Post.findByIdAndDelete(req.params.id);
+
+    res.status(204).json({
+      status: 'success'
+    });
+  }catch(err){
+
+    res.status(400).json({
+      status: 'fail',
+      message: err
+    })
+  }
+};
