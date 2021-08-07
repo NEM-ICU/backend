@@ -7,26 +7,27 @@ const postSchema = new mongoose.Schema({
     unique: true,
     trim: true
   },
-  profilePic:{
+  date: {
+    type: Date,
+    default: Date.now(),
+    select : false
+  },
+  userProfilePic:{
     type: String,
     required: [true, 'A post must have a profilePic']
   },
-  description: {
+  postDesc: {
     type: String,
     required: [true, 'A post must have description'],
     trim: true
   },
   postImages: [String],
-  reactions: {
+  postReactions: {
     type: Object,
     required:[true, 'A post must have reactions']
 
   },
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-    select : false
-  },
+  
 
 });
 
